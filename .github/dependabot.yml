@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    groups:
+      security-patch-minor:
+        applies-to: security-updates
+        patterns:
+          - "*"
+        update-types:
+          - patch
+          - minor
+      security-major:
+        applies-to: security-updates
+        patterns:
+          - "*"
+        update-types:
+          - major
