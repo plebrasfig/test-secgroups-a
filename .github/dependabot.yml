@@ -4,7 +4,6 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-    target-branch: 'develop'
     groups:
       group-nest-dependencies:
         patterns:
@@ -108,13 +107,6 @@ updates:
           - 'minor'
           - 'patch'
 
-  # entrée dédiée à la sécurité : volontairement SANS target-branch
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'daily'
-    open-pull-requests-limit: 0
-    groups:
       security-patch-minor:
         applies-to: 'security-updates'
         patterns:
