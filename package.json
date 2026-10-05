@@ -1,6 +1,6 @@
 {
   "name": "test-secgroups-a",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "GRAPHQL-3251 - fixture : verifier si les groupes security-* du dependabot.yml sont transmis au job de securite",
   "dependencies": {
