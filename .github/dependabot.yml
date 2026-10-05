@@ -1,20 +1,143 @@
 version: 2
 updates:
-  - package-ecosystem: npm
-    directory: /
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: daily
+      interval: 'monthly'
+      time: '08:00'
+      timezone: 'Europe/Paris'
+    open-pull-requests-limit: 3
+    cooldown:
+      semver-minor-days: 14
+      semver-patch-days: 14
+      exclude:
+        - '@nodejs-tools/fig-node-config'
+        - '@nodejs-tools/figcucumber'
+        - '@nodejs-tools/figston'
+        - '@nodejs-tools/fig-http-client'
+        - '@nodejs-tools/replay'
+    target-branch: 'develop'
+    commit-message:
+      prefix: 'chore'
+      include: 'scope'
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - 'version-update:semver-major'
     groups:
+      group-nest-dependencies:
+        patterns:
+          - '@nestjs/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-nodejs-tools:
+        patterns:
+          - '@nodejs-tools/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-testing-tools:
+        patterns:
+          - 'supertest'
+          - '@types/supertest'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-observability:
+        patterns:
+          - 'prom-client'
+          - 'express-prom-bundle'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-validation-and-utils:
+        patterns:
+          - 'convict'
+          - 'reflect-metadata'
+          - 'rxjs'
+          - 'dotenv'
+          - '@types/convict'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-express:
+        patterns:
+          - 'express'
+          - '@types/express'
+          - 'multer'
+          - '@types/multer'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-build-and-runtime:
+        patterns:
+          - 'express'
+          - 'ts-node'
+          - 'ts-loader'
+          - 'tsconfig-paths'
+          - '@types/express'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-image-processing:
+        patterns:
+          - 'jimp'
+          - 'probe-image-size'
+          - '@types/probe-image-size'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-cloud-services:
+        patterns:
+          - '@google-cloud/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-data-validation:
+        patterns:
+          - 'class-validator'
+          - 'class-transformer'
+          - '@types/validator'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-linters-and-formatters:
+        patterns:
+          - 'husky'
+          - 'lint-staged'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+      group-typescript-types:
+        patterns:
+          - '@types/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
       security-patch-minor:
-        applies-to: security-updates
+        applies-to: 'security-updates'
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - patch
-          - minor
+          - 'patch'
+          - 'minor'
+
       security-major:
-        applies-to: security-updates
+        applies-to: 'security-updates'
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - major
+          - 'major'

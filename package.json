@@ -4,6 +4,7 @@
   "private": true,
   "description": "GRAPHQL-3251 - fixture : verifier si les groupes security-* du dependabot.yml sont transmis au job de securite",
   "dependencies": {
+    "axios": "0.21.1",
     "lodash": "4.17.20",
     "minimist": "1.2.5",
     "moment": "2.29.1"
